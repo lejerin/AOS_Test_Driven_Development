@@ -1,7 +1,9 @@
 package com.happy.moneytdd;
 
-public class Money {
+public abstract class Money {
     protected int amount;
+
+    abstract Money times(int multiplier);
 
     static Dollar dollar(int amount) {
         return new Dollar(amount);
