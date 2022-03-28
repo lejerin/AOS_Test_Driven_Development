@@ -1,13 +1,13 @@
 package com.happy.moneytdd;
 
 public class Dollar {
-    int amount;
+    int amount = 10;
 
     Dollar(int amount) {
-        this.amount = amount;
+        
     }
 
     public void times(int multiplier) {
-        
+
     }
 }
