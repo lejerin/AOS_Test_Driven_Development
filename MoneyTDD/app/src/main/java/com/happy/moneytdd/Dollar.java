@@ -3,7 +3,7 @@ package com.happy.moneytdd;
 import java.util.Objects;
 
 public class Dollar {
-    int amount;
+    private int amount;
 
     Dollar(int amount) {
         this.amount = amount;
