@@ -3,18 +3,13 @@ package com.happy.moneytdd;
 import java.util.Objects;
 
 public class Dollar extends Money {
-    private String currency;
 
-    Dollar(int amount) {
+    Dollar(int amount, String currency) {
         this.amount = amount;
-        currency = "CHF";
+        this.currency = "CHF";
     }
 
     public Money times(int multiplier) {
-        return new Dollar(amount * multiplier);
-    }
-
-    public String currency() {
-        return currency;
+        return Money.dollar(amount * multiplier);
     }
 }

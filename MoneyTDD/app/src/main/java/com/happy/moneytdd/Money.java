@@ -2,16 +2,16 @@ package com.happy.moneytdd;
 
 public abstract class Money {
     protected int amount;
+    protected String currency;
 
     abstract Money times(int multiplier);
-    abstract String currency();
 
     static Money dollar(int amount) {
-        return new Dollar(amount);
+        return new Dollar(amount, "USD");
     }
 
     static Money franc(int amount) {
-        return new Franc(amount);
+        return new Franc(amount, "CHF");
     }
 
     @Override
@@ -19,5 +19,9 @@ public abstract class Money {
         Money money = (Money) o;
         return amount == money.amount
                 && getClass().equals(money.getClass());
+    }
+
+    String currency() {
+        return currency;
     }
 }

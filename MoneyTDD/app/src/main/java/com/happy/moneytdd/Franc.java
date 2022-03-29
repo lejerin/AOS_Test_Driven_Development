@@ -1,18 +1,13 @@
 package com.happy.moneytdd;
 
 public class Franc extends Money {
-    private String currency;
 
-    Franc(int amount) {
+    Franc(int amount, String currency) {
         this.amount = amount;
-        currency = "CHF";
+        this.currency = "CHF";
     }
 
     public Money times(int multiplier) {
-        return new Franc(amount * multiplier);
-    }
-
-    public String currency() {
-        return currency;
+        return Money.franc(amount * multiplier);
     }
 }
