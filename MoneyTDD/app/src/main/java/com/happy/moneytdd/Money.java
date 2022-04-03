@@ -1,10 +1,8 @@
 package com.happy.moneytdd;
 
-public abstract class Money {
+public class Money {
     protected int amount;
     protected String currency;
-
-    abstract Money times(int multiplier);
 
     Money(int amount, String currency) {
         this.amount = amount;
@@ -23,10 +21,18 @@ public abstract class Money {
     public boolean equals(Object o) {
         Money money = (Money) o;
         return amount == money.amount
-                && getClass().equals(money.getClass());
+                && currency().equals(money.currency());
     }
 
     String currency() {
         return currency;
+    }
+
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
+
+    public String toString() {
+        return amount + " " + currency;
     }
 }
