@@ -1,6 +1,6 @@
 package com.happy.moneytdd;
 
-public class Money {
+public class Money implements Expression {
     protected int amount;
     protected String currency;
 
@@ -17,13 +17,6 @@ public class Money {
         return new Money(amount, "CHF");
     }
 
-    @Override
-    public boolean equals(Object o) {
-        Money money = (Money) o;
-        return amount == money.amount
-                && currency().equals(money.currency());
-    }
-
     String currency() {
         return currency;
     }
@@ -31,6 +24,18 @@ public class Money {
     public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
+
+    Expression plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Money money = (Money) o;
+        return amount == money.amount
+                && currency().equals(money.currency());
+    }
+
 
     public String toString() {
         return amount + " " + currency;
