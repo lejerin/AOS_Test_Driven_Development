@@ -35,9 +35,18 @@ public class MoneyTest {
     @Test
     public void testSimpleAddition() {
         Money five = Money.dollar(5);
-        Expression sum = five.plus(five); // 두 Money의 합은 Expression이어야 한다.
+        Expression sum = five.plus(five);
         Bank bank = new Bank();
         Money reduced = bank.reduce(sum, "USD"); // 환율을 적용
         assertEquals(Money.dollar(10), reduced);
+    }
+
+    @Test
+    public void testPlusReturnsSum() {
+        Money five = Money.dollar(5);
+        Expression result = five.plus(five);
+        Sum sum = (Sum) result;
+        assertEquals(five, sum.augend);
+        assertEquals(five, sum.addend);
     }
 }
