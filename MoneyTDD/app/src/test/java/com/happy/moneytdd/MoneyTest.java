@@ -88,6 +88,15 @@ public class MoneyTest {
         assertEquals(Money.dollar(10), result);
     }
 
-
+    @Test
+    public void testSumPlusMoney() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression Sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks); // ($5 + 10CHF) + $5 = $15
+        Money result = bank.reduce(Sum, "USD");
+        assertEquals(Money.dollar(15), result);
+    }
 
 }
